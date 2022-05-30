@@ -1,6 +1,8 @@
-#include <iostream>
-#include "lsm.h"
+//#include "include/lsm.h"
 
+#include <cstdio>
+#include <cstdlib>
+#include <time.h>
 char* generate_value(int size, char byte){
     char* res= new char[size];
     srand(time(NULL));
@@ -13,24 +15,26 @@ char* generate_value(int size, char byte){
 }
 
 int main() {
-    lsm db("/home/megaserg01/Soft/LSM-KVS/db.file");
-    printf("key: ");
-    char* key = generate_value(lsm::KEY_SIZE/8, 'x');
-    printf("value1: ");
-    char* value = generate_value(lsm::VALUE_SIZE, 'a');
-    db.add(key, value);
-    char* res = db.find(key);
-    printf("result1: ");
-    for(int i = 0; i < lsm::VALUE_SIZE;i++){
-        printf("%c", res[i]);
-    }
-    printf("\nvalue2: ");
-    value = generate_value(lsm::VALUE_SIZE, 'b');
-    db.add(key, value);
-    res = db.find(key);
-    printf("result2: ");
-    for(int i = 0; i < lsm::VALUE_SIZE;i++){
-        printf("%c", res[i]);
-    }
+    printf("hello");
+    fflush(stdout);
+//    lsm db("/home/megaserg01/Soft/LSM-KVS/db.file");
+//    printf("key: ");
+//    char* key = generate_value(lsm::KEY_SIZE/8, 'x');
+//    printf("value1: ");
+//    char* value = generate_value(lsm::VALUE_SIZE, 'a');
+//    db.add(KeyValue(key, lsm::KEY_SIZE, value, lsm::VALUE_SIZE));
+//    std::optional<Value> res = db.find(Key(key, lsm::KEY_SIZE));
+//    printf("result1: ");
+//    for(int i = 0; i < lsm::VALUE_SIZE;i++){
+//        printf("%c", res.value().getValue()[i]);
+//    }
+//    printf("\nvalue2: ");
+//    value = generate_value(lsm::VALUE_SIZE, 'b');
+//    db.add(KeyValue(key, lsm::KEY_SIZE, value, lsm::VALUE_SIZE));
+//    std::optional<Value> res2 = db.find(Key(key, lsm::KEY_SIZE));
+//    printf("result2: ");
+//    for(int i = 0; i < lsm::VALUE_SIZE;i++){
+//        printf("%c", res2.value().getValue()[i]);
+//    }
     return 0;
 }
