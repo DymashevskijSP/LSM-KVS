@@ -10,8 +10,8 @@
 struct ByteArray{
 public:
     explicit ByteArray(const std::string& path);
-    char* write_value(Value value);
-    char* read_value(const char* offset, size_t offset_size, size_t value_size);
+    virtual char* write_value(Value value);
+    virtual char* read_value(const char* offset, size_t offset_size, size_t value_size);
 private:
     FILE *data;
     int file_end = 0;

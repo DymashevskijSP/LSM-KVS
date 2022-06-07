@@ -1,4 +1,4 @@
-#include "../include/log.h"
+#include "log.h"
 log::log(size_t log_size_, size_t key_size_, size_t offset_size_):log_size(log_size_), key_size(key_size_), offset_size(offset_size_) {
     log_bytes = new char[log_size_ * (key_size + offset_size)];
 }

@@ -1,4 +1,4 @@
-#include "../include/ByteArray.h"
+#include "ByteArray.h"
 #include <zconf.h>
 ByteArray::ByteArray(const std::string &path) {
     data = fopen(path.c_str(), "rw+");
@@ -7,10 +7,10 @@ ByteArray::ByteArray(const std::string &path) {
     }
 }
 
-char *ByteArray::read_value(const char *offset,const size_t offset_size, const size_t value_size) {
-    int32_t off = 0;
+char *ByteArray::read_value(const char *offset, const size_t offset_size, const size_t value_size) {
+    uint32_t off = 0;
     for (int i = 0; i < offset_size; i++) {
-        off <<= 8;
+        off <<= 8u;
         off += offset[i];
     }
     if (fseek(data, off, SEEK_SET)) {
@@ -26,6 +26,7 @@ char *ByteArray::read_value(const char *offset,const size_t offset_size, const s
     }
     return value;
 }
+
 
 char *ByteArray::write_value(Value value) {
     if (write(fileno(data), value.getValue(), value.getSize()) != value.getSize()) {
